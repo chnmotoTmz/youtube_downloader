@@ -1,3 +1,123 @@
+# YouTube MP3 ダウンローダー
+
+YouTubeの動画をMP3形式でダウンロードするためのGUIアプリケーションです。PythonとTkinterで作成されています。
+
+## 主な機能
+
+- 使いやすいグラフィカルインターフェース
+- YouTube動画のダウンロードとMP3への自動変換
+- プログレスバーでダウンロードの進捗を表示
+- ダウンロード履歴の表示
+- 進行中のダウンロードのキャンセル機能
+- ダウンロードフォルダへの簡単アクセス
+- 高品質音声抽出（192kbps）対応
+- クロスプラットフォーム対応（Windows、macOS、Linux）
+
+## 必要な環境
+
+- Python 3.6以上
+- ffmpeg
+- 必要なPythonパッケージ：
+  - yt-dlp
+  - tkinter（通常はPythonに同梱）
+
+## インストール手順
+
+1. まず、Python 3.6以上がインストールされていることを確認してください。
+
+2. ffmpegのインストール：
+   
+   **Windows（Chocolateyを使用）：**
+   ```bash
+   choco install ffmpeg
+   ```
+   
+   **macOS（Homebrewを使用）：**
+   ```bash
+   brew install ffmpeg
+   ```
+   
+   **Linux（Ubuntu/Debian）：**
+   ```bash
+   sudo apt-get install ffmpeg
+   ```
+
+3. 必要なPythonパッケージのインストール：
+   ```bash
+   pip install yt-dlp
+   ```
+
+4. `yt.py`をダウンロードし、任意の場所に保存してください。
+
+## 使い方
+
+1. アプリケーションの起動：
+   ```bash
+   python yt.py
+   ```
+
+2. アプリケーションウィンドウが開き、以下の機能が利用できます：
+   - URL入力フィールド
+   - ダウンロードボタン
+   - キャンセルボタン
+   - プログレスバー
+   - ダウンロード履歴
+   - フォルダを開くボタン
+
+3. 動画のダウンロード方法：
+   - YouTube URLを入力フィールドに貼り付け
+   - 「Download」をクリック
+   - ダウンロードと変換が完了するまで待機
+   - MP3ファイルは Downloads/YouTube_Audio フォルダに保存されます
+
+4. その他の機能：
+   - 「Cancel」をクリックで進行中のダウンロードを中止
+   - 「Open Folder」をクリックでダウンロードフォルダを表示
+   - ダウンロード履歴で完了・失敗したダウンロードを確認可能
+
+## 保存先フォルダ
+
+ダウンロードしたMP3ファイルは以下の場所に保存されます：
+- Windows：`C:\Users\<ユーザー名>\Downloads\YouTube_Audio`
+- macOS/Linux：`/home/<ユーザー名>/Downloads/YouTube_Audio`
+
+## トラブルシューティング
+
+1. **FFmpegが見つからないエラー：**
+   - ffmpegが正しくインストールされているか確認
+   - ffmpegがシステムPATHに含まれているか確認
+   - ffmpegの再インストールを試してみる
+
+2. **ダウンロードが失敗する：**
+   - インターネット接続を確認
+   - YouTube URLが有効か確認
+   - ダウンロードディレクトリの書き込み権限を確認
+
+3. **変換が失敗する：**
+   - ffmpegが正しくインストールされているか確認
+   - 十分なディスク容量があるか確認
+   - ダウンロードディレクトリのアクセス権限を確認
+
+## 注意事項
+
+- インターネット接続が必要です
+- ダウンロード速度はインターネット接続速度に依存します
+- 制限により一部の動画はダウンロードできない場合があります
+- YouTube_Audioフォルダは存在しない場合、自動的に作成されます
+
+## ライセンス
+
+このプロジェクトはMITライセンスのもとでオープンソースとして公開されています。
+
+## クレジット
+
+このアプリケーションは以下のオープンソースパッケージを使用しています：
+- yt-dlp
+- ffmpeg
+- Python Tkinter
+
+
+
 # YouTube MP3 Downloader
 
 A simple GUI application that downloads YouTube videos and converts them to MP3 format. Built with Python and Tkinter.
