@@ -1,11 +1,13 @@
-# YouTube MP3 ダウンローダー
+# YouTube ダウンローダー
 
-YouTubeの動画をMP3形式でダウンロードするためのGUIアプリケーションです。PythonとTkinterで作成されています。
+YouTubeの動画をMP3またはMP4形式でダウンロードできるGUIアプリケーションです。PythonとTkinterで作成されています。
 
 ## 主な機能
 
 - 使いやすいグラフィカルインターフェース
-- YouTube動画のダウンロードとMP3への自動変換
+- YouTube動画のダウンロードとMP3/MP4形式の選択保存
+- 保存先フォルダを自由に選択可能（「Browse...」ボタン）
+- プレイリストURLを入力して、含まれる動画URL一覧をテキストファイルに出力
 - プログレスバーでダウンロードの進捗を表示
 - ダウンロード履歴の表示
 - 進行中のダウンロードのキャンセル機能
@@ -23,30 +25,24 @@ YouTubeの動画をMP3形式でダウンロードするためのGUIアプリケ�
 
 ## インストール手順
 
-1. まず、Python 3.6以上がインストールされていることを確認してください。
-
+1. Python 3.6以上がインストールされていることを確認してください。
 2. ffmpegのインストール：
-   
-   **Windows（Chocolateyを使用）：**
-   ```bash
-   choco install ffmpeg
-   ```
-   
-   **macOS（Homebrewを使用）：**
-   ```bash
-   brew install ffmpeg
-   ```
-   
-   **Linux（Ubuntu/Debian）：**
-   ```bash
-   sudo apt-get install ffmpeg
-   ```
-
+   - Windows（Chocolatey）：
+     ```bash
+     choco install ffmpeg
+     ```
+   - macOS（Homebrew）：
+     ```bash
+     brew install ffmpeg
+     ```
+   - Linux（Ubuntu/Debian）：
+     ```bash
+     sudo apt-get install ffmpeg
+     ```
 3. 必要なPythonパッケージのインストール：
    ```bash
    pip install yt-dlp
    ```
-
 4. `yt.py`をダウンロードし、任意の場所に保存してください。
 
 ## 使い方
@@ -55,29 +51,38 @@ YouTubeの動画をMP3形式でダウンロードするためのGUIアプリケ�
    ```bash
    python yt.py
    ```
-
-2. アプリケーションウィンドウが開き、以下の機能が利用できます：
+2. アプリケーションウィンドウの主な機能：
    - URL入力フィールド
+   - 保存先フォルダ表示と「Browse...」ボタン（保存先を自由に選択可能）
+   - ダウンロード形式選択（MP3/MP4ラジオボタン）
    - ダウンロードボタン
    - キャンセルボタン
    - プログレスバー
    - ダウンロード履歴
    - フォルダを開くボタン
+   - 「Extract List URLs」ボタン（プレイリストURL抽出）
 
 3. 動画のダウンロード方法：
-   - YouTube URLを入力フィールドに貼り付け
+   - YouTubeの動画またはプレイリストのURLを入力フィールドに貼り付け
+   - 保存先フォルダを必要に応じて「Browse...」で変更
+   - ダウンロード形式（MP3またはMP4）を選択
    - 「Download」をクリック
    - ダウンロードと変換が完了するまで待機
-   - MP3ファイルは Downloads/YouTube_Audio フォルダに保存されます
+   - 選択した保存先フォルダにファイルが保存されます
 
-4. その他の機能：
-   - 「Cancel」をクリックで進行中のダウンロードを中止
-   - 「Open Folder」をクリックでダウンロードフォルダを表示
+4. プレイリストURLの動画一覧抽出：
+   - プレイリストのURLを入力
+   - 「Extract List URLs」ボタンをクリック
+   - 保存先フォルダに「[プレイリスト名]_urls.txt」として動画URL一覧が保存されます
+
+5. その他の機能：
+   - 「Cancel」で進行中のダウンロードを中止
+   - 「Open Folder」で保存先フォルダを開く
    - ダウンロード履歴で完了・失敗したダウンロードを確認可能
 
 ## 保存先フォルダ
 
-ダウンロードしたMP3ファイルは以下の場所に保存されます：
+ダウンロードしたファイルは、デフォルトでは以下の場所に保存されますが、「Browse...」ボタンで任意のフォルダに変更できます：
 - Windows：`C:\Users\<ユーザー名>\Downloads\YouTube_Audio`
 - macOS/Linux：`/home/<ユーザー名>/Downloads/YouTube_Audio`
 
@@ -87,12 +92,10 @@ YouTubeの動画をMP3形式でダウンロードするためのGUIアプリケ�
    - ffmpegが正しくインストールされているか確認
    - ffmpegがシステムPATHに含まれているか確認
    - ffmpegの再インストールを試してみる
-
 2. **ダウンロードが失敗する：**
    - インターネット接続を確認
    - YouTube URLが有効か確認
    - ダウンロードディレクトリの書き込み権限を確認
-
 3. **変換が失敗する：**
    - ffmpegが正しくインストールされているか確認
    - 十分なディスク容量があるか確認
@@ -103,7 +106,7 @@ YouTubeの動画をMP3形式でダウンロードするためのGUIアプリケ�
 - インターネット接続が必要です
 - ダウンロード速度はインターネット接続速度に依存します
 - 制限により一部の動画はダウンロードできない場合があります
-- YouTube_Audioフォルダは存在しない場合、自動的に作成されます
+- 保存先フォルダは存在しない場合、自動的に作成されます
 
 ## ライセンス
 
@@ -115,8 +118,6 @@ YouTubeの動画をMP3形式でダウンロードするためのGUIアプリケ�
 - yt-dlp
 - ffmpeg
 - Python Tkinter
-
-
 
 # YouTube MP3 Downloader
 
