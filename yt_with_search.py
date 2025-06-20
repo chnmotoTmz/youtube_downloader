@@ -10,12 +10,16 @@ import webbrowser
 import requests
 import json
 from datetime import datetime
+from dotenv import load_dotenv
 
 class YouTubeDownloaderWithSearch:
     def __init__(self, root):
         self.root = root
         self.root.title("YouTube Downloader with Search")
         self.root.geometry("800x600")
+        
+        # Load environment variables
+        load_dotenv()
         
         # Download control
         self.current_process = None
@@ -27,7 +31,10 @@ class YouTubeDownloaderWithSearch:
         self.is_searching = False
         
         # API settings
-        self.api_key = ""
+        self.api_key = os.getenv('YOUTUBE_API_KEY', '')
+        
+        # Check if .env file exists, if not create guidance
+        self.check_env_file()
         
         # Search results storage
         self.search_results = []
@@ -43,6 +50,23 @@ class YouTubeDownloaderWithSearch:
         
         # Bind window close event
         self.root.protocol("WM_DELETE_WINDOW", self.on_closing)
+    
+    def check_env_file(self):
+        """Check if .env file exists and guide user to create one"""
+        env_path = Path('.env')
+        env_example_path = Path('.env.example')
+        
+        if not env_path.exists() and env_example_path.exists():
+            message = (
+                "No .env file found!\n\n"
+                "To use the search functionality, you need to set up your YouTube API key:\n\n"
+                "1. Copy .env.example to .env\n"
+                "2. Get your API key from:\n"
+                "   https://console.cloud.google.com/apis/credentials\n"
+                "3. Replace 'your_youtube_api_key_here' with your actual API key\n\n"
+                "You can also enter the API key directly in the Search tab."
+            )
+            messagebox.showinfo("Setup Required", message)
 
     def create_download_tab(self):
         """Create the original download functionality tab"""
@@ -136,7 +160,7 @@ class YouTubeDownloaderWithSearch:
         api_frame.grid(row=0, column=0, columnspan=3, sticky=(tk.W, tk.E), pady=5)
         
         ttk.Label(api_frame, text="API Key:").grid(row=0, column=0, sticky=tk.W, padx=5)
-        self.api_key_var = tk.StringVar()
+        self.api_key_var = tk.StringVar(value=self.api_key)
         self.api_key_entry = ttk.Entry(api_frame, textvariable=self.api_key_var, width=50, show="*")
         self.api_key_entry.grid(row=0, column=1, sticky=(tk.W, tk.E), padx=5)
         

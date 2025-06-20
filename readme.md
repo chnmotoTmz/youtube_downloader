@@ -34,6 +34,7 @@ YouTubeの動画をMP3またはMP4形式でダウンロードできるGUIアプ�
 - 必要なPythonパッケージ：
   - yt-dlp
   - requests
+  - python-dotenv
   - tkinter（通常はPythonに同梱）
 
 ## インストール手順
@@ -58,7 +59,7 @@ YouTubeの動画をMP3またはMP4形式でダウンロードできるGUIアプ�
    ```
    または個別にインストール：
    ```bash
-   pip install yt-dlp requests
+   pip install yt-dlp requests python-dotenv
    ```
 
 4. YouTube Data API v3キーの取得（検索機能を使用する場合）：
@@ -66,7 +67,17 @@ YouTubeの動画をMP3またはMP4形式でダウンロードできるGUIアプ�
    - YouTube Data API v3を有効化
    - APIキーを作成し、メモしておく
 
-5. `yt_with_search.py`をダウンロードし、任意の場所に保存してください。
+5. 環境変数の設定（検索機能を使用する場合）：
+   - `.env.example`ファイルを`.env`にコピー：
+     ```bash
+     cp .env.example .env
+     ```
+   - `.env`ファイルを編集し、APIキーを設定：
+     ```
+     YOUTUBE_API_KEY=your_actual_api_key_here
+     ```
+
+6. `yt_with_search.py`をダウンロードし、任意の場所に保存してください。
 
 ## 使い方
 
@@ -110,8 +121,10 @@ YouTubeの動画をMP3またはMP4形式でダウンロードできるGUIアプ�
 ### 検索タブの使い方（新機能）
 
 1. API キーの設定：
-   - 「YouTube Data API Settings」セクションでAPIキーを入力
-   - 「Set API Key」ボタンをクリック
+   - 初回起動時に`.env`ファイルが存在しない場合、セットアップガイドが表示されます
+   - 環境変数から自動的にAPIキーが読み込まれます
+   - 必要に応じて「YouTube Data API Settings」セクションでAPIキーを変更可能
+   - 「Set API Key」ボタンをクリックして保存
 
 2. 検索パラメータの設定：
    - 検索キーワードを入力
