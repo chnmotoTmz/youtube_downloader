@@ -77,7 +77,7 @@ YouTubeの動画をMP3またはMP4形式でダウンロードできるGUIアプ�
      YOUTUBE_API_KEY=your_actual_api_key_here
      ```
 
-6. `yt_with_search.py`をダウンロードし、任意の場所に保存してください。
+6. `yt.py`をダウンロードし、任意の場所に保存してください。
 
 ## 使い方
 
@@ -85,7 +85,7 @@ YouTubeの動画をMP3またはMP4形式でダウンロードできるGUIアプ�
 
 1. アプリケーションの起動：
    ```bash
-   python yt_with_search.py
+   python yt.py
    ```
 
 ### ダウンロードタブの使い方（従来機能）
